@@ -1,0 +1,49 @@
+@import "compass/css3";
+@import "compass/css3/animation";
+@import "animate-lib";
+
+$app-background-color: rgb(49, 183, 191);
+$question-background-color: #C1E9EB;
+$large-font-size: 20px;
+$base-line-height: 1.5;
+$min-unit: 8px;
+$radius: 2px;
+
+@mixin cardStyle($backgroundColor: #fff, $padding: $min-unit){
+  border-radius:$radius;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
+  background-color: $backgroundColor;
+  padding: $padding;
+}
+
+@mixin cardStyle-image($align){
+  @if $align == 'left'{
+    border-radius: $radius 0 0 $radius;
+  }
+  @if $align == 'right'{
+    border-radius: 0 $radius $radius 0;
+  }
+  @if $align == 'top'{
+    border-radius: $radius $radius 0 0;
+  }
+  @if $align == 'bottom'{
+    border-radius: 0 0 $radius $radius;
+  }
+  @if $align == 'fill'{
+    border-radius: $radius;
+  }
+}
+
+@mixin cardShadowActive(){
+  box-shadow: 0 6px 9px 0 rgba(0,0,0,0.5);
+}
+
+@mixin context($old-context, $new-context) {
+  @at-root #{selector-replace(&, $old-context, $new-context)} {
+    @content;
+  }
+}
+
+.center-align {
+  text-align: center;
+}

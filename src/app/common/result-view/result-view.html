@@ -1,0 +1,143 @@
+<div class="result-view" layout="column" flex>
+    <div layout="column" flex ng-class="hideContainer">
+        <md-content class="header-bar" layout-margin>
+            <div layout-margin class="title" ng-bind-html="resultData.activityTitle | textToHtml"></div>
+        </md-content>
+        <div flex layout="column" ng-show="!showAnswer" class="score-region">
+            <div class="score-area" layout="column" layout-align="center center" flex>
+                <div class="circle animation-complete" layout="column" layout-align="center center">
+                    <div class="award" ng-show="resultData.highScore > 0">
+                        <svg class="complete-icon" x="80px" y="80px" viewBox="0 0 500 500">
+                            <g class="award-star" id="award-star" ng-if="resultData.activityScoreRank.rank !== 'trophy'">
+                                <polygon class="star-background" fill="{{resultData.activityScoreRank.fillColor}}" points="250,0 182.8,191.3 2.5,191.3 149.2,301.9 96.6,500 250,382.5 402.3,500 349.7,301.9 497.5,191.3
+        317.2,191.3 "></polygon>
+                                <polygon class="star-gradient" fill="url(#award-grad1)"
+                                         points="250,0 250,382.5 402.3,500 349.7,301.9 497.5,191.3 317.2,191.3 "></polygon>
+                            </g>
+                            <g class="award-trophy" id="award-trophy" ng-if="resultData.activityScoreRank.rank === 'trophy'">
+                                <path class="trophy-background" fill="#fcc419" d="M35.4,112.4h53.1c8.1,72.9,28.6,136.6,57,182.1C80,258.8,35.5,190.6,35.4,112.4z M464.5,112.4
+c-0.1,78.2-44.5,146.4-110.1,182.1c28.4-45.5,49-109.3,57-182.1H464.5L464.5,112.4z M307.9,347c108.6-25.5,189.3-120.9,189.3-234.7
+c0-11-0.8-21.8-2.3-32.5h-80.8c0.7-11.9,1-24,1-36.2c0-14.8-0.5-29.3-1.5-43.5H86.3c-0.9,14.2-1.5,28.7-1.5,43.5
+c0,12.3,0.4,24.3,1.1,36.2H5.1c-1.5,10.6-2.3,21.5-2.3,32.5c0,113.9,80.7,209.3,189.4,234.8c12.6,9.3,26,15.6,39.9,18.5v48.9
+c0,38.6-101.2,52.8-101.2,52.8c-9,0-16.3,7.3-16.3,16.4c0,9,7.3,16.3,16.3,16.3h238.3c9,0,16.3-7.3,16.3-16.3
+c0-9-7.3-16.4-16.3-16.4c0,0-104.4-14.3-104.4-52.8v-48.3C279.8,363.6,294.3,357,307.9,347"/>
+
+
+                                <path class="trophy-gradient" fill="url(#award-grad1)" d="M307.9,347c108.6-25.5,189.3-120.9,189.3-234.7c0-11-0.8-21.8-2.3-32.5h-80.8c0.7-11.9,1-24,1-36.2
+c0-14.8-0.5-29.3-1.5-43.5H250v500h119.1c9,0,16.3-7.3,16.3-16.3c0-9-7.3-16.4-16.3-16.4c0,0-104.4-14.3-104.4-52.8v-48.3
+C279.8,363.6,294.3,357,307.9,347z M411.4,112.4h53.1c-0.1,78.2-44.5,146.4-110.1,182.1C382.9,249.1,403.4,185.3,411.4,112.4z"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="score score--award-3">
+                        <span class="high-score-span">{{resultData.highScore}}</span><span style="color: #AAA">/{{resultData.totalQuestions}}</span>
+                    </div>
+                </div>
+                <div class="high-score-message" layout-fill ng-show="resultData.isHighScore">
+                    <svg class="high-score-message--new" viewBox="0 0 220 42">
+                        <polygon fill="#FFC200" points="16,10 0,10 16,26 0,42 16,42 40,42 40,10 "></polygon>
+                        <polygon fill="#FFC200" points="220,10 204,10 204,10 180,10 180,42 204,42 220,42 204,26 "></polygon>
+                        <rect x="25" fill="#FFE200" width="170" height="34"></rect>
+                        <polygon fill="#F2A800" points="25,34 40,42 40,34 "></polygon>
+                        <polygon fill="#F2A800" points="195,34 180,42 180,34 "></polygon>
+                        <text style="text-anchor: middle; letter-spacing: 0;">
+                            <tspan x="50%" y="50%">New high score!</tspan>
+                        </text>
+                    </svg>
+                </div> <!--end high-score-message-->
+            </div><!--end score area-->
+            <div class="show-answers-area" ng-if="!showAnswer" ng-click="showAnswerClicked()">
+                <div class="show-answers-button" layout="row" layout-align="center center">
+                    <span class="button-text">Show answers</span>
+                <span class="button-icon">
+                  <svg viewBox="18 18 36 36">
+                      <path fill="#fff"
+                            d="M39.5,28.5h-7v8h-4.4l7.9,7.4l8-7.4h-4.5V28.5L39.5,28.5z M36,50.1c-7.7,0-14.1-6.3-14.1-14.1 c0-7.8,6.3-14.1,14.1-14.1c7.8,0,14.1,6.3,14.1,14.1C50.1,43.8,43.8,50.1,36,50.1 M36,18c-9.9,0-18,8.1-18,18c0,9.9,8.1,18,18,18	s18-8.1,18-18C54,26.1,45.9,18,36,18"></path>
+                  </svg>
+                </span>
+                </div>
+            </div><!--end show-answers area-->
+            <div ng-if="showAnswer">
+                Show Answers
+            </div>
+        </div>
+        <md-content ng-show="showAnswer" class="answer-region" layout="column" flex>
+            <div layout="row" layout-align="center center" class="score-wrapper" >
+                <div class="score">
+                    <span class="high-score-span" style="color: {{resultData.activityScoreRank.fillColor}}">{{resultData.correctQuestionCount}}</span><span style="color: #AAA">/{{resultData.totalQuestions}}</span>
+                </div>
+                <div class="award" ng-show="resultData.highScore > 0" layout-margin>
+                    <svg class="complete-icon" x="80px" y="80px" viewBox="0 0 500 500">
+                        <g class="award-star" id="award-star" ng-if="resultData.activityScoreRank.rank !== 'trophy'">
+                            <polygon class="star-background" fill="{{resultData.activityScoreRank.fillColor}}" points="250,0 182.8,191.3 2.5,191.3 149.2,301.9 96.6,500 250,382.5 402.3,500 349.7,301.9 497.5,191.3
+            317.2,191.3 "></polygon>
+                            <polygon class="star-gradient" fill="url(#award-grad1)" points="250,0 250,382.5 402.3,500 349.7,301.9 497.5,191.3 317.2,191.3 "></polygon>
+                        </g>
+                        <g class="award-trophy" id="award-trophy" ng-if="resultData.activityScoreRank.rank === 'trophy'">
+                            <path class="trophy-background" fill="#fcc419" d="M35.4,112.4h53.1c8.1,72.9,28.6,136.6,57,182.1C80,258.8,35.5,190.6,35.4,112.4z M464.5,112.4
+c-0.1,78.2-44.5,146.4-110.1,182.1c28.4-45.5,49-109.3,57-182.1H464.5L464.5,112.4z M307.9,347c108.6-25.5,189.3-120.9,189.3-234.7
+c0-11-0.8-21.8-2.3-32.5h-80.8c0.7-11.9,1-24,1-36.2c0-14.8-0.5-29.3-1.5-43.5H86.3c-0.9,14.2-1.5,28.7-1.5,43.5
+c0,12.3,0.4,24.3,1.1,36.2H5.1c-1.5,10.6-2.3,21.5-2.3,32.5c0,113.9,80.7,209.3,189.4,234.8c12.6,9.3,26,15.6,39.9,18.5v48.9
+c0,38.6-101.2,52.8-101.2,52.8c-9,0-16.3,7.3-16.3,16.4c0,9,7.3,16.3,16.3,16.3h238.3c9,0,16.3-7.3,16.3-16.3
+c0-9-7.3-16.4-16.3-16.4c0,0-104.4-14.3-104.4-52.8v-48.3C279.8,363.6,294.3,357,307.9,347"/>
+
+
+                            <path class="trophy-gradient" fill="url(#award-grad1)" d="M307.9,347c108.6-25.5,189.3-120.9,189.3-234.7c0-11-0.8-21.8-2.3-32.5h-80.8c0.7-11.9,1-24,1-36.2
+c0-14.8-0.5-29.3-1.5-43.5H250v500h119.1c9,0,16.3-7.3,16.3-16.3c0-9-7.3-16.4-16.3-16.4c0,0-104.4-14.3-104.4-52.8v-48.3
+C279.8,363.6,294.3,357,307.9,347z M411.4,112.4h53.1c-0.1,78.2-44.5,146.4-110.1,182.1C382.9,249.1,403.4,185.3,411.4,112.4z"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <md-list class="answer-list" flex>
+                <md-list-item class="list-item" layout-margin ng-repeat="question in resultData.questions">
+                    <md-content flex layout-fill layout="column" layout-align="center center">
+                        <div layout="row" class="audio-image-text-wrapper" flex layout-fill layout-align="center center"
+                            ng-if="((question.Audio || question.Image) && question.text || question.text)" >
+                            <img ng-if="question.Image" ng-src="{{question.Image}}" layout-padding>
+                            <div layout-margin ng-if="question.Audio">
+                                <md-icon layout-margin md-svg-icon="img/icons/audio.svg" class="audio-icon"></md-icon>
+                            </div>
+                            <div flex>
+                                <p ng-bind-html="question.text | textToHtml" layout-margin></p>
+                            </div>
+                        </div>
+                        <div layout="row" flex layout-fill layout-align="center center" >
+                            <img ng-if="question.Image && !question.text" ng-src="{{question.Image}}" layout-padding>
+                            <md-icon ng-if="question.Audio && !question.text" layout-margin md-svg-icon="img/icons/audio.svg" class="audio-icon"></md-icon>
+                            <p ng-if="question.correct" flex layout-margin ng-bind-html="question.userAnswer | textToHtml"></p>
+                            <div ng-if="!question.correct" flex layout-margin layout="column" layout-align="center start" class="wrong-answer-wrapper">
+                                <div layout="column" flex layout-fill>
+                                    <span class="answer-label">You Answered:</span>
+                                    <span flex layout-fill class="user-answer" ng-bind-html="question.userAnswer | textToHtml"></span>
+                                </div>
+                                <div ng-if="resultData.engineType === 'match_choose_otm'" layout="column" class="actual-answer-wrapper" flex layout-fill>
+                                    <span class="actual-answer">Answer is:</span>
+                                    <span flex layout-fill ng-bind-html="question.correctanswer | textToHtml"></span>
+                                </div>
+                                <div ng-if="resultData.engineType === 'key_in_box_otm'" layout="column" class="actual-answer-wrapper" flex layout-fill>
+                                    <span class="actual-answer">Accepted answers:</span>
+                                    <span flex layout-fill ng-repeat="answer in question.answers.answer"
+                                          ng-bind-html="answer | textToHtml"></span>
+                                </div>
+                                <div ng-if="resultData.engineType === 'sentence_scramble_otm'" layout="column" class="actual-answer-wrapper" flex layout-fill>
+                                    <span class="actual-answer">Accepted answers:</span>
+                                    <span flex layout-fill ng-bind-html="question.answer | textToHtml"></span>
+                                    <span flex layout-fill ng-repeat="alternateAnswer in question.answerAlternate"
+                                          ng-bind-html="alternateAnswer | textToHtml"></span>
+                                </div>
+                            </div>
+                            <md-icon ng-show="question.correct" class="correct show-answer-icon" layout-margin md-svg-icon="img/icons/check.svg" ></md-icon>
+                            <md-icon ng-show="!question.correct" class="in-correct show-answer-icon" layout-margin md-svg-icon="img/icons/cancel.svg" ></md-icon>
+                        </div>
+                    </md-content>
+                </md-list-item>
+            </md-list>
+        </md-content>
+        <div layout="row" layout-align="center center" class="navigation-bar" layout-margin>
+            <div flex class="center-align text-color" ng-click="tryAgainClicked()">TRY AGAIN</div>
+            <div flex class="center-align text-color" ng-click="quitClicked()">QUIT</div>
+        </div>
+    </div>
+    <div class='resultsCircle'><div class='resultsCircleScore'></div></div>
+</div>

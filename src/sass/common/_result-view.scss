@@ -1,0 +1,163 @@
+.result-view {
+  .hide-container {
+    display: none;
+  }
+  .header-bar {
+    background-color: #FFF;
+    color: #444;
+    .title {
+      font-size: 18px;
+    }
+  }
+  .score-region {
+    background-color: #31B7BF;
+    .score-area {
+      background-color: transparent;
+      background-attachment: scroll, scroll, scroll, scroll;
+      background-clip: border-box, border-box, border-box, border-box;
+      background-origin: padding-box, padding-box, padding-box, padding-box;
+      background-position: 48% 52%, 50% 54%, 51% 46%, 53% 60%;
+      background-size: 400px auto;
+      background-repeat: no-repeat;
+      background-image: radial-gradient(#47EDFF 0px, rgba(71, 237, 255, 0) 50%), radial-gradient(#4DDEE6 0px, rgba(77, 222, 230, 0) 180px), radial-gradient(#4DDEE6 0px, rgba(77, 222, 230, 0) 160px), radial-gradient(#4DDEE6 0px, rgba(77, 222, 230, 0) 140px);
+      .circle {
+        position: relative;
+        width: 208px;
+        height: 208px;
+        border-radius: 50%;
+        background: #FFF none repeat scroll 0% 0%;
+      }
+      .score {
+        font-weight: 700;
+        font-size: 4rem;
+        line-height: 1;
+        color: #AAA;
+      }
+      .award {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 8px;
+      }
+      .high-score-message {
+        margin-top: -30px;
+        position: relative;
+        .high-score-message--new text {
+          font-family: "Open Sans","Roboto","Helvetica Neue",sans-serif;
+          font-weight: 700;
+          fill: #0D96AE;
+        }
+      }
+    }
+    .show-answers-area {
+      .show-answers-button {
+        background: #0D96AE none repeat scroll 0% 0%;
+        padding: 16px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #FFF;
+        cursor: pointer;
+        -moz-user-select: none;
+        .button-icon {
+          width: 24px;
+          height: 24px;
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+  .answer-region {
+    background-color: #31B7BF;
+    height: 400px;
+    overflow: auto;
+    .score-wrapper {
+      background-color: #FFF;
+      .score {
+        font-weight: 700;
+        font-size: 4rem;
+        line-height: 1;
+        color: #aaa;
+      }
+      .award {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 6%;
+        margin-left: 4%;
+      }
+    }
+    .list-item {
+      padding: 0;
+      md-content {
+        border-radius: 4px;
+        .audio-image-text-wrapper {
+          background-color: #c1e9eb;
+        }
+        img {
+          height: 64px; width: 64px; border-radius: 50%;
+        }
+        .audio-icon {
+          height: 48px;
+          width: 48px;
+          border-radius: 50%;
+          background-color: #F2A800;
+          box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.3);
+          margin: 16px;
+          @include transition(box-shadow 0.3s);
+          svg {
+            margin: 0;
+          }
+        }
+        .audio-image-text-wrapper .audio-icon{
+          margin: 8px;
+        }
+        .correct {
+          color: #93C70A; height: 32px; width: 32px;
+          svg {
+            margin: 0;
+          }
+        }
+        .in-correct {
+          color: #D63400; height: 32px; width: 32px;
+          svg {
+            margin: 0;
+          }
+        }
+        .wrong-answer-wrapper {
+          .answer-label {
+            font-size: 14px;
+            line-height: 1;
+            color: #bbb;
+          }
+          .user-answer {
+            //border-bottom: 1px solid #ccc;
+          }
+          .actual-answer-wrapper {
+            margin-top: -2px !important;
+            padding-top: 8px;
+            border-top: 1px solid #ccc;
+            .actual-answer {
+              font-size: 14px;
+              line-height: 1;
+              color: #bbb;
+            }
+          }
+        }
+      }
+    }
+  }
+  .navigation-bar {
+    background-color: rgba(255, 255, 255, 0.4);
+    .text-color {
+      color: #31B7BF;
+    }
+  }
+  .resultsCircle {
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

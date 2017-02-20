@@ -1,0 +1,4 @@
+<div class="score-bar-container" layout="row">
+  <div class="score-bar-counter" ng-style= "{'left' : left}" ng-show="vm.introData.questions.question[vm.introData.currentQuestionIndex].correct === true || vm.introData.questions.question[vm.introData.currentQuestionIndex].correct === false">{{vm.introData.scoreCount}}</div>
+  <div class="score-bar-progress" ng-repeat="question in vm.introData.questions.question" flex><span ng-class="{'correct': vm.introData.questions.question[$index].correct === true, 'incorrect': vm.introData.questions.question[$index].correct === false}"></span></div>
+</div>

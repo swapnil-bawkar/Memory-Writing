@@ -1,0 +1,82 @@
+<div class="intro-view" layout="column" flex>
+    <md-toolbar class="md-toolbar-tools nav-bar">
+        <md-button class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-icon="img/icons/arrow_back.svg"></md-icon>
+        </md-button>
+        <div layout layout-align="start center" layout-fill>
+            <div class="md-title" ng-bind-html="vm.introData.activityTitle"></div>
+        </div>
+        <md-button class="md-icon-button" aria-label="Favorite">
+            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+    </md-toolbar>
+    <div layout="column" flex class="activity-intro">
+        <div class="info-text" layout="column" layout-padding>
+            <div>
+                <h1 class="subtitle" ng-if="vm.introData.activitySubtitle"
+                    ng-bind-html="vm.introData.activitySubtitle"></h1>
+
+                <p ng-bind-html="vm.introData.instructions" ng-if="vm.introData.instructions"></p>
+            </div>
+            <div layout="row" layout-align="space-between center">
+                <div ng-if="vm.introData.activityAudio">
+                    <md-icon md-svg-icon="img/icons/circle.svg" style="color:#ac4c94"></md-icon>
+                    <label>Audio activity</label>
+                </div>
+                <div ng-if="vm.introData.activityMode['@value'] === 'Timed'">
+                    <md-icon md-svg-icon="img/icons/circle.svg" style="color:#ac4c94"></md-icon>
+                    <label>Activity is timed</label>
+                </div>
+            </div>
+        </div>
+        <md-content layout-padding md-ink-ripple class="score-data" flex layout="column" layout-align="center center">
+            <div class="ripple"></div>
+            <div layout="column" layout-align="center center">
+                <div class="high-score-label" ng-if="vm.introData.highScore > 0">High score</div>
+                <div layout="column" layout-align="center center" ng-class="{'zero-score-container': vm.introData.highScore === 0, 'high-score-container': vm.introData.highScore > 0}">
+                    <svg ng-if="vm.introData.highScoreRank.rank" height="72" viewBox="0 0 530 530" width="72" x="0px" y="0px">
+                        <linearGradient id="award-grad1" x1="0%" x2="100%" y1="0%" y2="0%">
+                            <stop style="stop-color:#f7ab1b;stop-opacity:1" offset="0%"></stop>
+                            <stop style="stop-color:#f7ab1b;stop-opacity:0" offset="100%"></stop>
+                        </linearGradient>
+                        <g class="award-star" id="award-gold" ng-if="vm.introData.highScoreRank.rank !== 'trophy'">
+                            <polygon class="star-background" fill="{{vm.introData.highScoreRank.fillColor}}"
+                                     points="265,15 197.8,206.3 15,206.3 164.2,316.9 111.6,515 265,397.5 417.3,515 364.7,316.9 515,206.3 332.2,206.3"></polygon>
+                            <polygon class="star-gradient" fill="url(#award-grad1)"
+                                     points="265,15 265,397.5 417.3,515 364.7,316.9 515,206.3 332.2,206.3 "></polygon>
+                            <polygon class="star-background" fill="transparent"
+                                     points="265,15 197.8,206.3 15,206.3 164.2,316.9 111.6,515 265,397.5 417.3,515 364.7,316.9 515,206.3 332.2,206.3"
+                                     stroke-linejoin="miter" stroke-width="15" stroke="{{vm.introData.highScoreRank.strokeColor}}"></polygon>
+                        </g>
+                        <g class="award-trophy" id="award-trophy" ng-if="vm.introData.highScoreRank.rank === 'trophy'">
+                            <path class="trophy-background" fill="#fcc419" d="M35.4,112.4h53.1c8.1,72.9,28.6,136.6,57,182.1C80,258.8,35.5,190.6,35.4,112.4z M464.5,112.4
+c-0.1,78.2-44.5,146.4-110.1,182.1c28.4-45.5,49-109.3,57-182.1H464.5L464.5,112.4z M307.9,347c108.6-25.5,189.3-120.9,189.3-234.7
+c0-11-0.8-21.8-2.3-32.5h-80.8c0.7-11.9,1-24,1-36.2c0-14.8-0.5-29.3-1.5-43.5H86.3c-0.9,14.2-1.5,28.7-1.5,43.5
+c0,12.3,0.4,24.3,1.1,36.2H5.1c-1.5,10.6-2.3,21.5-2.3,32.5c0,113.9,80.7,209.3,189.4,234.8c12.6,9.3,26,15.6,39.9,18.5v48.9
+c0,38.6-101.2,52.8-101.2,52.8c-9,0-16.3,7.3-16.3,16.4c0,9,7.3,16.3,16.3,16.3h238.3c9,0,16.3-7.3,16.3-16.3
+c0-9-7.3-16.4-16.3-16.4c0,0-104.4-14.3-104.4-52.8v-48.3C279.8,363.6,294.3,357,307.9,347"/>
+
+
+                            <path class="trophy-gradient" fill="url(#award-grad1)" d="M307.9,347c108.6-25.5,189.3-120.9,189.3-234.7c0-11-0.8-21.8-2.3-32.5h-80.8c0.7-11.9,1-24,1-36.2
+c0-14.8-0.5-29.3-1.5-43.5H250v500h119.1c9,0,16.3-7.3,16.3-16.3c0-9-7.3-16.4-16.3-16.4c0,0-104.4-14.3-104.4-52.8v-48.3
+C279.8,363.6,294.3,357,307.9,347z M411.4,112.4h53.1c-0.1,78.2-44.5,146.4-110.1,182.1C382.9,249.1,403.4,185.3,411.4,112.4z"/>
+                        </g>
+
+                    </svg>
+
+                    <div class="score-no" ng-if="vm.introData.highScore > 0" style="color: {{vm.introData.highScoreRank.fillColor}};">{{vm.introData.highScore}}</div>
+                    <div class="try-it-now" ng-if="vm.introData.highScore === 0">TRY IT NOW</div>
+                </div>
+            </div>
+        </md-content>
+        <md-content ng-if="vm.imageDone" ng-click="vm.startBtnClicked()" class="start-btn-container"
+                    md-ink-ripple="#31b7bf" layout="row" layout-align="center center">
+            <p class="start-label">START</p>
+        </md-content>
+        <md-content ng-click="vm.loadingBarClicked()" layout="column" ng-if="!vm.imageDone" class="loading-bar"
+                    md-ink-ripple="#31b7bf">
+            <p class="loading-images">LOADING IMAGES...</p>
+            <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+        </md-content>
+    </div>
+</div>

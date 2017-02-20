@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="smart-choice">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Choice</title>
+</head>
+<body>
+<script>
+    (function () {
+        'use strict';
+        function getParameters() {
+            var match,
+                urlParams = [],
+                pl = /\+/g,  // Regex for replacing addition symbol with a space
+                search = /([^&=]+)=?([^&]*)/g,
+                decode = function (s) {
+                    return decodeURIComponent(s.replace(pl, " "));
+                },
+                query = window.location.search.substring(1);
+
+            while ((match = search.exec(query))) {
+                urlParams[decode(match[1])] = decode(match[2]);
+            }
+
+            return urlParams;
+        };
+        var params = getParameters(),
+                eid = params.eid ? params.eid : 'memory_speaking_otm',
+                did = params.did ? params.did : 'TEST_20_01_01';
+        window.location = './dist/index.html?eid=' + eid + "&did=" + did;
+    })();
+</script>
+</body>
+</html>

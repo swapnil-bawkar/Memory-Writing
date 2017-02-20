@@ -1,0 +1,58 @@
+@import "base";
+@import "common/_intro-view";
+@import "common/_audio-player-view";
+@import "common/_result-view";
+@import "common/_score-bar-view";
+@import "common/_quit-page-view";
+@import "engine/memory_speaking_otm";
+
+body {
+  font-family: "Open Sans", "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+md-content{
+  outline: none;
+}
+
+.engine.ng-enter, .engine.ng-leave, .engine.ng-enter-active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  @include transition(all 0.5s);
+}
+
+.engine.ng-enter {
+  .score-data {
+    .high-score-container {
+      @include animation(zoomIn 1s);
+    }
+    .ripple {
+      opacity: 0;
+    }
+  }
+  .loading-bar {
+    opacity: 0;
+  }
+  .card-content-animation, .md-card-image {
+    @include animation(zoomIn 0.5s);
+  }
+}
+
+.engine.ng-leave {
+  @include animation(fadeOut 0.5s);
+  .card-content-animation {
+    @include animation(rotateOutDownRight 0.5s);
+  }
+}
+
+.engine.ng-enter-active {
+  .ripple{
+    border-radius: 50%;
+    @include animation(zoomIn 1s 0.2s);
+  }
+}
