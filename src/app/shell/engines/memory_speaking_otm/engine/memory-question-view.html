@@ -8,7 +8,7 @@
             </div>
         </md-content>
         <div layout="column" flex class="list-container" ng-style="vm.listContainerMargin" ng-class="vm.feedBackAnimation">
-            <div  flex ng-class="{'layout-column':!vm.question.checkBtnClicked}" class="answer-container">
+            <div  flex="auto" ng-class="{'layout-column':!vm.question.checkBtnClicked}" class="answer-container">
                 <div class="user-answer-wrapper" flex layout="column" layout-align="center center">
                     <div flex layout-fill layout="column" layout-align="center center">
                         <md-content flex class="user-answer" layout="row" layout-align="center center" ng-class="vm.feedbackClass">
@@ -35,13 +35,13 @@
                 <md-list-item class="feedback-card">
                     <md-content flex>
                         <div ng-if="vm.question.correct" layout="row" layout-align="start center">
-                            <md-icon md-svg-icon="img/icons/check.svg" flex="20" layout-fill style="color: #93C70A"></md-icon>
+                            <md-icon layout-margin md-svg-icon="img/icons/check.svg" flex="15" layout-fill style="color: #93C70A"></md-icon>
                             <div flex class="feedback-card-text" layout="column" layout-align="center start">
                                 <p>Well Done!</p>
                             </div>
                         </div>
                         <div ng-if="!vm.question.correct" layout="row" layout-align="center center">
-                            <md-icon md-svg-icon="img/icons/cancel.svg" style="color: #D63400" flex="20" layout-fill></md-icon>
+                            <md-icon layout-margin md-svg-icon="img/icons/cancel.svg" style="color: #D63400" flex="15" layout-fill></md-icon>
                             <div flex class="feedback-card-text" layout="column" layout-align="center start">
                                 <p>Sorry, accepted answer is:</p>
                                 <p ng-bind-html="vm.question.answer | textToHtml"></p>

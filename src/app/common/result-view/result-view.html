@@ -3,7 +3,7 @@
         <md-content class="header-bar" layout-margin>
             <div layout-margin class="title" ng-bind-html="resultData.activityTitle | textToHtml"></div>
         </md-content>
-        <div flex layout="column" ng-show="!showAnswer" class="score-region">
+        <div flex="auto" layout="column" ng-show="!showAnswer" class="score-region">
             <div class="score-area" layout="column" layout-align="center center" flex>
                 <div class="circle animation-complete" layout="column" layout-align="center center">
                     <div class="award" ng-show="resultData.highScore > 0">
@@ -61,8 +61,9 @@ C279.8,363.6,294.3,357,307.9,347z M411.4,112.4h53.1c-0.1,78.2-44.5,146.4-110.1,1
                 Show Answers
             </div>
         </div>
-        <md-content ng-show="showAnswer" class="answer-region" layout="column" flex>
-            <div layout="row" layout-align="center center" class="score-wrapper" >
+        <md-content ng-show="showAnswer" class="answer-region" flex style="-webkit-overflow-scrolling: touch;
+">
+            <div layout="row" layout-align="center center" class="score-wrapper">
                 <div class="score">
                     <span class="high-score-span" style="color: {{resultData.activityScoreRank.fillColor}}">{{resultData.correctQuestionCount}}</span><span style="color: #AAA">/{{resultData.totalQuestions}}</span>
                 </div>

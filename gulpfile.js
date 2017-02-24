@@ -17,18 +17,23 @@ var uglify = require('gulp-uglify');
 var production = false;
 
 gulp.task('serve', function(callback) {
-    runSequence('clean', 'index', 'compass', 'material-css', 'images', 'js', 'watch', callback);
+    runSequence('clean', 'index', 'compass', 'material-css', 'images', 'js', 'copy', 'watch', callback);
 });
 
 gulp.task('production', function(callback) {
     production = true;
-    runSequence('clean', 'index', 'compass', 'material-css', 'images', 'js', 'uglify', callback);
+    runSequence('clean', 'index', 'compass', 'material-css', 'images', 'js', 'copy', 'uglify', callback);
 });
 
 gulp.task('uglify', function() {
     return gulp.src(gulpConfig.bundleDestination + gulpConfig.bundleName)
         .pipe(uglify())
         .pipe(gulp.dest(gulpConfig.bundleDestination));
+});
+
+gulp.task('copy', function() {
+    return gulp.src('./activities/**/*')
+        .pipe(gulp.dest(gulpConfig.dist + "/activities"));
 });
 
 function bundle(bundler) {

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<memory-speaking>
+  <instructions>&lt;p&gt;Helps you retrieve words from memory faster, eliminating tip-of-the-tongue moments.&lt;/p&gt;</instructions>
+  <activityTitle>&lt;p&gt;Memory&lt;/p&gt;</activityTitle>
+  <activitySubtitle>&lt;p&gt;Speaking&lt;/p&gt;</activitySubtitle>
+  <fontSize value="large" />
+  <activityMode value="practice" />
+  <timedMode value="none" />
+  <activityAudio />
+  <randomizeQuestions value="no" />
+  <questions>
+    <question>
+      <Audio />
+      <text>in the same direction as the hands of a clock</text>
+      <answer>&lt;p&gt;clockwise&lt;/p&gt;</answer>
+      <characters>c,l,o,c,k,w,i,s,e,s</characters>
+    </question>
+    <question>
+      <Audio />
+      <Image />
+      <text>&lt;p&gt;home or domicile&lt;/p&gt;</text>
+      <answer>&lt;p&gt;dwelling&lt;/p&gt;</answer>
+      <characters>d,w,e,l,l,i,n,g,s,r</characters>
+    </question>
+    <question>
+      <Audio />
+      <Image />
+      <text>something that cannot be cured</text>
+      <answer>incurable</answer>
+      <characters>i,n,c,u,r,a,b,l,e,l</characters>
+    </question>
+    <question>
+      <Audio />
+      <Image />
+      <text>person who handles sales at a store or bank</text>
+      <answer>cashier</answer>
+      <characters>c,a,s,h,i,e,r,s,l,m</characters>
+    </question>
+    <question>
+      <Audio />
+      <Image />
+      <text>not causing harm</text>
+      <answer>harmless</answer>
+      <characters>h,a,r,m,l,e,s,s,b,r</characters>
+    </question>
+  </questions>
+</memory-speaking>
+

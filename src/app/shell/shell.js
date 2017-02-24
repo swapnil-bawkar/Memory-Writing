@@ -1,7 +1,6 @@
 /**
  * Created by sbawkar on 9/29/2015.
  */
-import queryString from 'query-string';
 import { ShellModel } from './model/shell-model';
 import { ShellController } from './shell-controller';
 import { MemorySpeakingOtm } from './engines/memory_speaking_otm/memory-speaking';
@@ -29,11 +28,8 @@ let StateConfig = ($stateProvider, $urlRouterProvider) => {
 };
 StateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-const queryParams = queryString.parse(location.search);
-const engineId = queryParams.eid;
-let engine = `smart-choice.shell.${engineId}`;
 
-let Shell = angular.module('smart-choice.shell', [engine])
+let Shell = angular.module('smart-choice.shell', [MemorySpeakingOtm])
 	.config(StateConfig)
 	.directive('introViewDirective', IntroViewDirective)
 	.directive('resultViewDirective', ResultViewDirective.directiveFactory)

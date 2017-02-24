@@ -1,16 +1,18 @@
 /**
  * Created by sbawkar on 10/3/2015.
  */
-import queryString from 'query-string';
+//import queryString from 'query-string';
 
-const ACTIVITY_PATH = '../activities';
+const ACTIVITY_PATH = './activities';
 const MEDIA_PATH = '../engines/media';
 let queryParams = {};
 let mediaFolder = '';
 class ShellModel {
 
 	constructor() {
-		queryParams = queryString.parse(location.search);
+		//queryParams = queryString.parse(location.search);
+		queryParams.eid = 'memory_speaking_otm';
+		queryParams.did = 'TEST_20_01_01';
 		mediaFolder = this.getDocument().split('_').splice(0,2).join('_');
 	}
 
